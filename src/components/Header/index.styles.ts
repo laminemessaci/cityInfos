@@ -12,7 +12,6 @@ interface IStyles {
 const styles: IStyles = {
   container: (theme: ITheme) => ({
     padding: isIOS? 20: 8,
-    justifyContent: "space-between",
     alignItems: "center",
     textAlign: "center",
     width: SCREEN_WIDTH,
