@@ -1,0 +1,4 @@
+
+GET https://restcountries.com/v3.1/name/
+
+GET https://restcountries.com/v3.1/name/france
