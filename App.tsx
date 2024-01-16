@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import "react-native-gesture-handler";
 import Header from "./src/components/Header";
 import HomeScreen from "./src/screens/HomeScreen";
 import { useTheme } from "./src/theme/ThemeProvider";

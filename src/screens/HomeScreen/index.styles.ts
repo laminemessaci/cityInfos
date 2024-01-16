@@ -11,7 +11,7 @@ const styles: IStyles = {
   container: (theme) => ({
     flex: 1,
     padding: 10,
-    top: 48,
+    top: 12,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-start",

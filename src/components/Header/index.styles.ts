@@ -11,7 +11,7 @@ interface IStyles {
 
 const styles: IStyles = {
   container: (theme: ITheme) => ({
-    padding: isIOS? 24: 16,
+    padding: isIOS? 20: 8,
     justifyContent: "space-between",
     alignItems: "center",
     textAlign: "center",
@@ -20,7 +20,7 @@ const styles: IStyles = {
     backgroundColor: theme.colors.secondary,
   }),
   image: (theme) => ({
-    top:isIOS ? 32: 16,
+    top:isIOS ? 32: 8,
     width: 50,
     margin: 12,
     height: 50,
