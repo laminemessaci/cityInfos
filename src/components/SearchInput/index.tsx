@@ -1,18 +1,22 @@
-
 import { TextInput, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch, useSelector } from "react-redux";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { useTheme } from "../../theme/ThemeProvider";
 
 import styles from "./index.styles";
-
-
+import { AppDispatch, RootState } from "../../redux/store";
+import { fetchCityInfo } from "../../redux/citySlice";
 
 const SearchInput: React.FC = (): JSX.Element => {
   const theme = useTheme();
-  const [cityName, setCityName] = useState<string>('')
+  const [cityName, setCityName] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
+  const cityInfo = useSelector((state: RootState) => state.city.cityInfo);
+
+  const lock = cityName.length < 3;
   const handleSearch = () => {
-    console.log("searching for", cityName);
+    dispatch(fetchCityInfo(cityName));
   };
 
   return (
@@ -24,7 +28,7 @@ const SearchInput: React.FC = (): JSX.Element => {
         onChangeText={(text) => setCityName(text)}
         placeholderTextColor={theme.colors.primary}
       />
-      <TouchableOpacity onPress={handleSearch}>
+      <TouchableOpacity onPress={handleSearch} disabled={lock}>
         <Icon
           name="search"
           size={25}
