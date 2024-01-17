@@ -17,18 +17,23 @@ const SearchInput: React.FC = (): JSX.Element => {
   const handleSearch = () => {
     dispatch(fetchCityInfo(cityName));
   };
+  
+/**
+ * Checks if the search functionality is disabled.
+ *
+ * @return {boolean} Returns true if the search is disabled, otherwise false.
+ */
   const isSearchDisabled = () => {
     if (cityName.length < 3) {
       return true;
     }
-
     const regex = /^[a-zA-Z\s]+$/u;
     if (!regex.test(cityName)) {
       return true;
     }
     // TO DO Verify if countries is include in external API here
 
-    return !cityInfo || cityInfo.length === 0;
+    return  cityInfo.length === 0;
   };
 
   return (
