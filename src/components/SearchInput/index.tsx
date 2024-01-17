@@ -14,9 +14,21 @@ const SearchInput: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
   const cityInfo = useSelector((state: RootState) => state.city.cityInfo);
 
-  const lock = cityName.length < 3;
   const handleSearch = () => {
     dispatch(fetchCityInfo(cityName));
+  };
+  const isSearchDisabled = () => {
+    if (cityName.length < 3) {
+      return true;
+    }
+
+    const regex = /^[a-zA-Z\s]+$/u;
+    if (!regex.test(cityName)) {
+      return true;
+    }
+    // TO DO Verify if countries is include in external API here
+
+    return !cityInfo || cityInfo.length === 0;
   };
 
   return (
@@ -28,7 +40,7 @@ const SearchInput: React.FC = (): JSX.Element => {
         onChangeText={(text) => setCityName(text)}
         placeholderTextColor={theme.colors.primary}
       />
-      <TouchableOpacity onPress={handleSearch} disabled={lock}>
+      <TouchableOpacity onPress={handleSearch} disabled={isSearchDisabled()}>
         <Icon
           name="search"
           size={25}
